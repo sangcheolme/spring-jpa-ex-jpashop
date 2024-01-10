@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Getter @Setter
 @Entity
-public class Delivery {
+public class Delivery extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "DELIVERY_ID")

@@ -31,15 +31,17 @@ public class JpaMain {
             order.setStatus(OrderStatus.ORDER);
             em.persist(order);
 
-            Item item = new Item();
-            item.setName("testItem");
-            item.setPrice(10000);
-            item.setStockQuantity(10);
-            em.persist(item);
+            Book book = new Book();
+            book.setName("testItem");
+            book.setPrice(10000);
+            book.setStockQuantity(10);
+            book.setIsbn("1234");
+            book.setAuthor("testAuthor");
+            em.persist(book);
 
             OrderItem orderItem = new OrderItem();
             orderItem.setOrder(order);
-            orderItem.setItem(item);
+            orderItem.setItem(book);
             orderItem.setOrderPrice(10000);
             orderItem.setCount(1);
             em.persist(orderItem);
