@@ -31,6 +31,5 @@ public class Order extends BaseEntity {
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
-
     private OrderStatus status;
 }
