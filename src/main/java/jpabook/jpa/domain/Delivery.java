@@ -15,9 +15,7 @@ public class Delivery extends BaseEntity {
     @Column(name = "DELIVERY_ID")
     private Long id;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    private Address address;
     private DeliveryStatus status; // READY, COMP
 
     @OneToOne(mappedBy = "delivery", fetch = LAZY)

@@ -9,16 +9,21 @@ import java.util.List;
 
 @Getter @Setter
 @Entity
-public class Member extends BaseEntity {
+public class Member {
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
 
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    //기간 Period
+    @Embedded
+    private Period workPeriod;
+
+    //주소 Address
+    @Embedded
+    private Address homeAddress;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();

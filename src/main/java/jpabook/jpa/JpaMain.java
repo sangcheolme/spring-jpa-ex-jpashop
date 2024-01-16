@@ -1,6 +1,8 @@
 package jpabook.jpa;
 
-import jpabook.jpa.domain.*;
+import jpabook.jpa.domain.Address;
+import jpabook.jpa.domain.Member;
+import jpabook.jpa.domain.Period;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,32 +21,10 @@ public class JpaMain {
 
         try {
             Member member = new Member();
-            member.setName("testName");
-            member.setCity("Seoul");
-            member.setStreet("Gangnam");
-            member.setZipcode("12345");
+            member.setName("hello");
+            member.setHomeAddress(new Address("city", "street", "12345"));
+            member.setWorkPeriod(new Period(LocalDateTime.now(), LocalDateTime.now()));
             em.persist(member);
-
-            Order order = new Order();
-            order.setMember(member);
-            order.setOrderDate(LocalDateTime.now());
-            order.setStatus(OrderStatus.ORDER);
-            em.persist(order);
-
-            Book book = new Book();
-            book.setName("testItem");
-            book.setPrice(10000);
-            book.setStockQuantity(10);
-            book.setIsbn("1234");
-            book.setAuthor("testAuthor");
-            em.persist(book);
-
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            orderItem.setItem(book);
-            orderItem.setOrderPrice(10000);
-            orderItem.setCount(1);
-            em.persist(orderItem);
 
             tx.commit();
         } catch (Exception e) {
